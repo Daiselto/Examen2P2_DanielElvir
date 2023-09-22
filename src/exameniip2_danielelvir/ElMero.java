@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -23,6 +24,7 @@ public class ElMero extends javax.swing.JFrame {
      */
     public ElMero() {
         initComponents();
+        da.cargarArchivo();
     }
 
     /**
@@ -42,8 +44,8 @@ public class ElMero extends javax.swing.JFrame {
         JD_Login = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        BttnLoginArtista = new javax.swing.JButton();
+        BttnLoginCliente = new javax.swing.JButton();
         JD_CrearArtista = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -67,7 +69,35 @@ public class ElMero extends javax.swing.JFrame {
         sp_Edad1 = new javax.swing.JSpinner();
         BttnCrearArtista1 = new javax.swing.JButton();
         JD_LoginArtista = new javax.swing.JDialog();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        tf_UsuarioArtista = new javax.swing.JTextField();
+        tf_ContraArtista = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
         JD_LoginCliente = new javax.swing.JDialog();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        tf_UsuarioCliente = new javax.swing.JTextField();
+        tf_ContraCliente = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
+        JD_InterfazArtista = new javax.swing.JDialog();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        tf_Titulo = new javax.swing.JTextField();
+        tf_Fecha = new javax.swing.JTextField();
+        sp_likes = new javax.swing.JSpinner();
+        jButton5 = new javax.swing.JButton();
+        jLabel23 = new javax.swing.JLabel();
+        cb_tipocancion = new javax.swing.JComboBox<>();
+        jPanel8 = new javax.swing.JPanel();
+        JD_InterfazCliente = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -135,11 +165,16 @@ public class ElMero extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel4.setText("A que tipo de cuenta desea entrar");
 
-        jButton3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jButton3.setText("Login Artista");
+        BttnLoginArtista.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        BttnLoginArtista.setText("Login Artista");
+        BttnLoginArtista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BttnLoginArtistaActionPerformed(evt);
+            }
+        });
 
-        jButton4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jButton4.setText("Login Cliente");
+        BttnLoginCliente.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        BttnLoginCliente.setText("Login Cliente");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -148,8 +183,8 @@ public class ElMero extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(76, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BttnLoginCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BttnLoginArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(69, 69, 69))
         );
@@ -159,9 +194,9 @@ public class ElMero extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel4)
                 .addGap(59, 59, 59)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BttnLoginArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BttnLoginCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(108, Short.MAX_VALUE))
         );
 
@@ -348,25 +383,260 @@ public class ElMero extends javax.swing.JFrame {
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jPanel6.setBackground(new java.awt.Color(0, 153, 51));
+
+        jLabel14.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
+        jLabel14.setText("Login de Artista");
+
+        jLabel15.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
+        jLabel15.setText("Usuario");
+
+        jLabel16.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
+        jLabel16.setText("Contraseña");
+
+        jButton3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jButton3.setText("Login");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(310, 310, 310)
+                        .addComponent(jLabel14))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel15))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tf_UsuarioArtista, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+                            .addComponent(tf_ContraArtista)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(373, 373, 373)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(165, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel14)
+                .addGap(88, 88, 88)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15)
+                    .addComponent(tf_UsuarioArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(108, 108, 108)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(tf_ContraArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(74, 74, 74)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout JD_LoginArtistaLayout = new javax.swing.GroupLayout(JD_LoginArtista.getContentPane());
         JD_LoginArtista.getContentPane().setLayout(JD_LoginArtistaLayout);
         JD_LoginArtistaLayout.setHorizontalGroup(
             JD_LoginArtistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JD_LoginArtistaLayout.setVerticalGroup(
             JD_LoginArtistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel7.setBackground(new java.awt.Color(0, 153, 51));
+
+        jLabel17.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
+        jLabel17.setText("Login de Cliente");
+
+        jLabel18.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
+        jLabel18.setText("Usuario");
+
+        jLabel19.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
+        jLabel19.setText("Contraseña");
+
+        jButton4.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jButton4.setText("Login");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(310, 310, 310)
+                        .addComponent(jLabel17))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel18))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tf_UsuarioCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+                            .addComponent(tf_ContraCliente)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(373, 373, 373)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(165, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel17)
+                .addGap(88, 88, 88)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18)
+                    .addComponent(tf_UsuarioCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(108, 108, 108)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(tf_ContraCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(74, 74, 74)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout JD_LoginClienteLayout = new javax.swing.GroupLayout(JD_LoginCliente.getContentPane());
         JD_LoginCliente.getContentPane().setLayout(JD_LoginClienteLayout);
         JD_LoginClienteLayout.setHorizontalGroup(
             JD_LoginClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JD_LoginClienteLayout.setVerticalGroup(
             JD_LoginClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.setBackground(new java.awt.Color(0, 0, 0));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jPanel9.setBackground(new java.awt.Color(0, 102, 102));
+
+        jLabel20.setText("Titulo de Publicacion");
+
+        jLabel21.setText("Fecha de Lanzamiento");
+
+        jLabel22.setText("Conteo de Likes");
+
+        tf_Titulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_TituloActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Crear Single");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jLabel23.setText("Escoja el tipo de la cancion");
+
+        cb_tipocancion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(131, 131, 131))
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel23)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel21)
+                        .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tf_Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(tf_Fecha)
+                    .addComponent(sp_likes, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_tipocancion, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(493, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(tf_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(tf_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(71, 71, 71)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(sp_likes, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(cb_tipocancion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(99, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Crear Single", jPanel9);
+
+        jPanel8.setBackground(new java.awt.Color(0, 102, 102));
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 977, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 604, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Crear Album", jPanel8);
+
+        javax.swing.GroupLayout JD_InterfazArtistaLayout = new javax.swing.GroupLayout(JD_InterfazArtista.getContentPane());
+        JD_InterfazArtista.getContentPane().setLayout(JD_InterfazArtistaLayout);
+        JD_InterfazArtistaLayout.setHorizontalGroup(
+            JD_InterfazArtistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1)
+        );
+        JD_InterfazArtistaLayout.setVerticalGroup(
+            JD_InterfazArtistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1)
+        );
+
+        javax.swing.GroupLayout JD_InterfazClienteLayout = new javax.swing.GroupLayout(JD_InterfazCliente.getContentPane());
+        JD_InterfazCliente.getContentPane().setLayout(JD_InterfazClienteLayout);
+        JD_InterfazClienteLayout.setHorizontalGroup(
+            JD_InterfazClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        JD_InterfazClienteLayout.setVerticalGroup(
+            JD_InterfazClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
@@ -516,6 +786,82 @@ public class ElMero extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BttnCrearArtista1ActionPerformed
 
+    private void BttnLoginArtistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BttnLoginArtistaActionPerformed
+        JD_LoginArtista.pack();
+        JD_LoginArtista.setModal(true);
+        JD_LoginArtista.setLocationRelativeTo(this);
+        JD_LoginArtista.setVisible(true);
+    }//GEN-LAST:event_BttnLoginArtistaActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            String userArt = tf_UsuarioArtista.getText();
+            String contraArt = tf_ContraArtista.getText();
+
+            //da = new DatosArtistas("./Artistas.uwu");
+            listaArtista = da.getArtista();
+            System.out.println(listaArtista.size());
+            for (Artista ar : listaArtista) {
+                if (ar.getUsername().equals(userArt)&&ar.getPassword().equals(contraArt)) {
+                    JOptionPane.showMessageDialog(JD_LoginArtista, "Login Exitoso\n  Cargando Spotify");
+                    JD_InterfazArtista.pack();
+                    JD_InterfazArtista.setModal(true);
+                    JD_InterfazArtista.setLocationRelativeTo(this);
+                    JD_InterfazArtista.setVisible(true);
+                }
+            }
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(JD_LoginArtista, "Ocurrió un error");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try {
+            String userArt = tf_UsuarioCliente.getText();
+            String contraArt = tf_ContraCliente.getText();
+
+            //da = new DatosArtistas("./Artistas.uwu");
+            listaCliente = dc.getArtista();
+            System.out.println(listaCliente.size());
+            for (Cliente ar : listaCliente) {
+                if (ar.getUsername().equals(userArt)&&ar.getPassword().equals(contraArt)) {
+                    JOptionPane.showMessageDialog(JD_LoginCliente, "Login Exitoso\n  Cargando Spotify");
+                    JD_InterfazCliente.pack();
+                    JD_InterfazCliente.setModal(true);
+                    JD_InterfazCliente.setLocationRelativeTo(this);
+                    JD_InterfazCliente.setVisible(true);
+                }
+            }
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(JD_LoginCliente, "Ocurrió un error");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void tf_TituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_TituloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_TituloActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        try {
+            String titulo = tf_Titulo.getText();
+            String fecha = tf_Fecha.getText();
+            int likes = (int) sp_likes.getValue();
+            
+            if (cb_tipocancion.getSelectedItem().equals("Si")) {
+                
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(JD_InterfazArtista, "Ocurrió un error");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -551,29 +897,47 @@ public class ElMero extends javax.swing.JFrame {
         });
     }
 
-    DatosArtistas da = new DatosArtistas("./Artistas.uwu");
-    DatosClientes dc = new DatosClientes("./Clientes.owo");
+    private ArrayList<Artista> listaArtista = new ArrayList();
+    private ArrayList<Cliente> listaCliente = new ArrayList();
+    private DatosArtistas da = new DatosArtistas("./Artistas.uwu");
+    private DatosClientes dc = new DatosClientes("./Clientes.owo");
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BttnCrear;
     private javax.swing.JButton BttnCrearArtista;
     private javax.swing.JButton BttnCrearArtista1;
     private javax.swing.JButton BttnLogin;
+    private javax.swing.JButton BttnLoginArtista;
+    private javax.swing.JButton BttnLoginCliente;
     private javax.swing.JDialog JD_Crear;
     private javax.swing.JDialog JD_CrearArtista;
     private javax.swing.JDialog JD_CrearCliente;
+    private javax.swing.JDialog JD_InterfazArtista;
+    private javax.swing.JDialog JD_InterfazCliente;
     private javax.swing.JDialog JD_Login;
     private javax.swing.JDialog JD_LoginArtista;
     private javax.swing.JDialog JD_LoginCliente;
+    private javax.swing.JComboBox<String> cb_tipocancion;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -586,12 +950,24 @@ public class ElMero extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jt_Contra;
     private javax.swing.JTextField jt_Contra1;
     private javax.swing.JTextField jt_User;
     private javax.swing.JTextField jt_User1;
     private javax.swing.JSpinner sp_Edad;
     private javax.swing.JSpinner sp_Edad1;
+    private javax.swing.JSpinner sp_likes;
+    private javax.swing.JTextField tf_ContraArtista;
+    private javax.swing.JTextField tf_ContraCliente;
+    private javax.swing.JTextField tf_Fecha;
     private javax.swing.JTextField tf_NomArtista;
+    private javax.swing.JTextField tf_Titulo;
+    private javax.swing.JTextField tf_UsuarioArtista;
+    private javax.swing.JTextField tf_UsuarioCliente;
     // End of variables declaration//GEN-END:variables
 }

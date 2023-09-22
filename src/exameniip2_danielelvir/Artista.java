@@ -4,17 +4,19 @@
  */
 package exameniip2_danielelvir;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author HP
  */
-public class Artista extends Usuario {
+public class Artista extends Usuario implements Serializable{
 
     private String Nom_Artistico;
     private ArrayList<Cancion> canSubidas = new ArrayList();
     private ArrayList<Album> AlbumPubli = new ArrayList();
+    private static final long serialVersionUID = 777L;
 
     public Artista() {
         super();

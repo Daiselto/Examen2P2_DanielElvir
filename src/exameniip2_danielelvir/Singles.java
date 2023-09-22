@@ -16,10 +16,10 @@ public class Singles extends Lanzamiento{
     public Singles() {
     }
 
-    public Singles(Cancion Cancion, String Titulo, Date fechaLanz, int Likes) {
+    public Singles(Cancion Cancion, String Titulo, String fechaLanz, int Likes) {
         super(Titulo, fechaLanz, Likes);
         this.Cancion = Cancion;
-    }
+    }   
 
     public Cancion getCancion() {
         return Cancion;

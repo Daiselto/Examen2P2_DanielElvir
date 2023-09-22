@@ -4,14 +4,17 @@
  */
 package exameniip2_danielelvir;
 
+import java.io.Serializable;
+
 /**
  *
  * @author HP
  */
-public class Usuario {
+public class Usuario implements Serializable{
     private String Username;
     private String Password;
     private int Edad;
+    private static final long serialVersionUID = 777L;
 
     public Usuario(String Username, String Password, int Edad) {
         this.Username = Username;

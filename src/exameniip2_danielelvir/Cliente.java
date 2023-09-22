@@ -4,16 +4,18 @@
  */
 package exameniip2_danielelvir;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author HP
  */
-public class Cliente extends Usuario{
+public class Cliente extends Usuario implements Serializable{
     private ArrayList<Cancion> canciones_fav= new ArrayList();
     private ArrayList<Lista_Reproduccion> ListasReproduccion = new ArrayList();
     private ArrayList<Lista_Reproduccion> ListasFav = new ArrayList();
+    private static final long serialVersionUID = 777L;
 
     public Cliente(String Username, String Password, int Edad) {
         super(Username, Password, Edad);

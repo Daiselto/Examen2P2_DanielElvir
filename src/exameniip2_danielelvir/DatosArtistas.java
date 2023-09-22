@@ -10,13 +10,14 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author HP
  */
-public class DatosArtistas {
+public class DatosArtistas{
     private ArrayList<Artista> listaArtista = new ArrayList();
     private File archivo = null;
 
@@ -49,7 +50,6 @@ public class DatosArtistas {
     
     public void cargarArchivo() {
         try {            
-            listaArtista = new ArrayList();
             Artista temp;
             if (archivo.exists()) {
                 FileInputStream entrada
@@ -58,6 +58,7 @@ public class DatosArtistas {
                     = new ObjectInputStream(entrada);
                 try {
                     while ((temp = (Artista) objeto.readObject()) != null) {
+                        System.out.println(temp.getUsername());
                         listaArtista.add(temp);
                     }
                 } catch (EOFException e) {
@@ -78,6 +79,7 @@ public class DatosArtistas {
             fw = new FileOutputStream(archivo);
             bw = new ObjectOutputStream(fw);
             for (Artista t : listaArtista) {
+                System.out.println(t.getUsername());
                 bw.writeObject(t);
             }
             bw.flush();

@@ -19,10 +19,11 @@ class Album extends Lanzamiento{
         super();
     }
 
-    public Album(int TotalCancion, String Titulo, Date fechaLanz, int Likes) {
+    public Album(int TotalCancion, String Titulo, String fechaLanz, int Likes) {
         super(Titulo, fechaLanz, Likes);
         this.TotalCancion = TotalCancion;
     }
+    
 
     public ArrayList<Cancion> getPertenecientes() {
         return Pertenecientes;
