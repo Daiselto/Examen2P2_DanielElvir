@@ -14,9 +14,12 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -120,6 +123,16 @@ public class ElMero extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         cb_Albumes = new javax.swing.JComboBox<>();
         cb_canciones = new javax.swing.JComboBox<>();
+        jPanel8 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Lanzamientos = new javax.swing.JTree();
+        jPanel12 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jLabel32 = new javax.swing.JLabel();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         JD_InterfazCliente = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -785,6 +798,90 @@ public class ElMero extends javax.swing.JFrame {
 
         Pestañas.addTab("Agregar Canciones al Album", jPanel11);
 
+        jPanel8.setBackground(new java.awt.Color(0, 102, 102));
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Lanzamientos");
+        Lanzamientos.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane1.setViewportView(Lanzamientos);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(239, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(224, 224, 224))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+
+        Pestañas.addTab("Ver Canciones", jPanel8);
+
+        jPanel12.setBackground(new java.awt.Color(0, 102, 102));
+
+        jScrollPane2.setViewportView(jList1);
+
+        jLabel32.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel32.setText("Reproduccion");
+
+        jButton8.setText("Reproducir");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jButton9.setText("Pausar");
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                        .addComponent(jButton8)
+                        .addGap(159, 159, 159)
+                        .addComponent(jButton9)
+                        .addGap(138, 138, 138))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                        .addComponent(jLabel32)
+                        .addGap(245, 245, 245))))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(jLabel32)
+                        .addGap(85, 85, 85)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(291, 291, 291)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton9)
+                            .addComponent(jButton8))))
+                .addContainerGap(138, Short.MAX_VALUE))
+        );
+
+        Pestañas.addTab("Simulacion", jPanel12);
+
         javax.swing.GroupLayout JD_InterfazArtistaLayout = new javax.swing.GroupLayout(JD_InterfazArtista.getContentPane());
         JD_InterfazArtista.getContentPane().setLayout(JD_InterfazArtistaLayout);
         JD_InterfazArtistaLayout.setHorizontalGroup(
@@ -1032,6 +1129,7 @@ public class ElMero extends javax.swing.JFrame {
             }
             bw.close();
             fw.close();
+            JOptionPane.showMessageDialog(JD_InterfazArtista, "Album Creado exitosamente");
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -1106,10 +1204,10 @@ public class ElMero extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void PestañasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_PestañasStateChanged
-        if (Pestañas.getSelectedIndex() == 3) {
+        if (Pestañas.getSelectedIndex() == 2) {
 
-            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_canciones.getModel();
-            listaCancion = new ArrayList();
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_Albumes.getModel();
+            listaAlbumes = new ArrayList();
             try {
                 File file = new File("./Albumes.txt");
                 FileReader fr = new FileReader(file);
@@ -1118,18 +1216,10 @@ public class ElMero extends javax.swing.JFrame {
                 String linea = "";
                 String entrada = "";
                 ArrayList<String> datos = new ArrayList();
-                while ((linea = br.readLine()) != null) {
 
-                    if (!linea.contains("];")) {
-                        entrada += linea;
-                    } else {
-                        datos.add(entrada);
-                        entrada = "";
-                    }
-                }
                 for (String dato : datos) {
                     String data[] = dato.split(",");
-                    data[0] = data[0].substring(2, data[0].length());
+                    String titulo = data[0];
                     data[1] = data[1].substring(2, data[1].length());
                     data[2] = data[2].substring(2, data[2].length());
                     data[3] = data[3].substring(2, data[3].length());
@@ -1150,7 +1240,50 @@ public class ElMero extends javax.swing.JFrame {
 
         }
 
+        if (Pestañas.getSelectedIndex() == 3) {
+            DefaultTreeModel modelo = (DefaultTreeModel) Lanzamientos.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
+            DefaultMutableTreeNode singles = new DefaultMutableTreeNode("Singles");
+            DefaultMutableTreeNode albumes = new DefaultMutableTreeNode("Albumes");
+            raiz.add(singles);
+            raiz.add(albumes);
+
+            listaSingle = new ArrayList();
+            try {
+                File file = new File("./Singles.txt");
+                FileReader fr = new FileReader(file);
+                BufferedReader br = new BufferedReader(fr);
+
+                String linea = "";
+                String entrada = "";
+                ArrayList<String> datos = new ArrayList();
+
+                while ((linea = br.readLine()) != null) {                    
+                        String data[] = linea.split(",");
+                        String titulo = data[0];
+                        DefaultMutableTreeNode nodo = new DefaultMutableTreeNode(titulo);
+                        singles.add(nodo);                    
+                }
+
+                modelo.reload();
+                Lanzamientos.setModel(modelo);
+                // modelo.addAll(vehiculoscb);
+                //cb_Vehiculos.setModel(modelo);
+                fr.close();
+                br.close();
+            } catch (Exception e) {
+            }
+        }
+        
+        if (Pestañas.getSelectedIndex()==4) {
+            DefaultListModel modelo = (DefaultListModel) jList1.getModel();
+            
+        }
     }//GEN-LAST:event_PestañasStateChanged
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1209,6 +1342,7 @@ public class ElMero extends javax.swing.JFrame {
     private javax.swing.JDialog JD_Login;
     private javax.swing.JDialog JD_LoginArtista;
     private javax.swing.JDialog JD_LoginCliente;
+    private javax.swing.JTree Lanzamientos;
     private javax.swing.JTabbedPane Pestañas;
     private javax.swing.JComboBox<String> cb_Albumes;
     private javax.swing.JComboBox<String> cb_canciones;
@@ -1220,6 +1354,8 @@ public class ElMero extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1245,22 +1381,29 @@ public class ElMero extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jt_Contra;
     private javax.swing.JTextField jt_Contra1;
     private javax.swing.JTextField jt_User;
